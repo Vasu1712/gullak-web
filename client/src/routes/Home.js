@@ -5,8 +5,8 @@ import { Icon } from '@iconify/react';
 const Home = () => {
 
     return (
-        <div className="w-full h-full bg-lightgray flex overflow-x-hidden">
-            Hello
+        <div className="w-full h-full bg-lightgray flex overflow-x-hidden font-sfpro">
+            Hello, this is home route component.
         </div>
     );
 };
