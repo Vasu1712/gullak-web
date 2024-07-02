@@ -60,7 +60,7 @@ const Leaderboard = () => {
           <div className="bg-violet-200 rounded-2xl p-4 mb-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center ">
-                <img src={generateAvatar('you')} alt="You" className="h-12 rounded-full mr-4 bg-skyblue" />
+                <img src={profileimage} alt="You" className="h-12 rounded-full mr-4 bg-skyblue" />
                 <div>
                   <h3 className="text-lg font-semibold">You</h3>
                   <p className="text-gray-600">₹30</p>
