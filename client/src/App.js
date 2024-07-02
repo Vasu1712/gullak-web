@@ -11,6 +11,7 @@ import Statistics from './routes/Statistics';
 import Blogspace from './routes/Blogspace';
 import Overview from './routes/Overview';
 import Tasks from './routes/Tasks';
+import Leaderboard from './routes/Leaderboard';
 import './firebaseConfig';
 import './custom.css';
 
@@ -63,6 +64,10 @@ function App() {
           < Route 
             path='/tasks'
             element=<Tasks />
+          />
+          < Route 
+            path='/leaderboard'
+            element=<Leaderboard />
           />
           {/* <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />

@@ -2,9 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import profileimage from '../assets/images/profile_image.png';
-import avatar1 from '../assets/images/avatar1.png';
-import avatar2 from '../assets/images/avatar2.png';
-import avatar3 from '../assets/images/avatar3.png';
 import Footer from './Footer';
 
 const generateAvatar = (seed) => `https://api.dicebear.com/9.x/micah/svg?seed=${seed}`; 

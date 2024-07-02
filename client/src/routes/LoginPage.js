@@ -63,11 +63,13 @@ const LoginPage = () => {
           <p className="text-right text-gray-500 font-light italic text-sm">
             Forgot Password?
           </p>
-          <button
-            onClick={handleSignInWithEmail}
-            className="flex justify-center items-center mx-auto w-36 mt-6 gap-x-2 bg-white text-darkpurple py-2 px-4 rounded-full shadow-lg">
-            Login
-          </button>
+          <Link to="/profile">
+            <button
+              onClick={handleSignInWithEmail}
+              className="flex justify-center items-center mx-auto w-36 mt-6 gap-x-2 bg-white text-darkpurple py-2 px-4 rounded-full shadow-lg">
+              Login
+            </button>
+          </Link>
           <div className="flex items-center my-4">
             <div className="flex-grow border-t border-gray-400"></div>
             <span className="flex-shrink mx-4 text-gray-400">Or</span>
