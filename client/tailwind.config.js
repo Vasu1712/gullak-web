@@ -25,7 +25,15 @@ module.exports = {
           lavender2: "#8082ed",
           pink1: "#feb4c5",
           pink2: "#db869a",
-        }
+          lightpink1: "#ede7fa",
+          lightpink2: "#cdc6f5",
+          reallavender: "#ab9afe",
+          skyblue: "#9ab9f9",
+          bg1:"#02070d",
+          bg2:"#040e1b",
+          bg3:"#02070D",
+
+        },
       },
     },
     variants: {

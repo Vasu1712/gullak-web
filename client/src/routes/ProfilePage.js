@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import Footer from './Footer';
+import Transactions from './Transactions';
 import profileimage from '../assets/images/profile_image.png';
 import coins from '../assets/images/coins.svg'; 
 import pot from '../assets/images/pot_icon.png';
@@ -93,58 +95,35 @@ const ProfilePage = () => {
         </div>
       </div>
       </div>
-
-      <div className="mt-6 w-full max-w-md">
-        <h4 className="text-xl font-semibold text-gray-800 mb-4">Transactions</h4>
-        <ul className="space-y-2">
-          <li className="flex justify-between items-center bg-white px-4 py-2 rounded-xl">
-            <div>
-              <h5 className="font-md text-lg">Puran's Store</h5>
-              <p className="text-sm text-gray-500">02 July 2023 | 10:00</p>
-            </div>
-            <p className="text-red-500">₹202</p>
-          </li>
-          <li className="flex justify-between items-center bg-white px-4 py-2 rounded-xl">
-            <div>
-              <h5 className="font-md text-lg">Excitel Wi-Fi Bill</h5>
-              <p className="text-sm text-gray-500">29 June 2023 | 14:40</p>
-            </div>
-            <p className="text-red-500">₹120</p>
-          </li>
-          <li className="flex justify-between items-center bg-white px-4 py-2 rounded-xl">
-            <div>
-              <h5 className="font-md text-lg">Stipend</h5>
-              <p className="text-sm text-gray-500">24 June 2023 | 12:10</p>
-            </div>
-            <p className="text-green-500">₹100000</p>
-          </li>
-          <li className="flex justify-between items-center bg-white p-4 rounded-lg shadow">
-            <div>
-              <h5 className="font-bold">Monthly Subscription</h5>
-              <p className="text-sm text-gray-500">22 June 2023 | 10:00</p>
-            </div>
-            <p className="text-red-500">₹699</p>
-          </li>
-        </ul>
-      </div>
-
-      <div className="fixed bottom-0 left-0 w-full px-4 py-2 bg-white shadow-lg flex justify-around items-center">
-        <Link to="/tasks" className="text-gray-500 hover:text-purple-500">
-        <Icon icon="carbon:task-star" width="28" className="my-auto hover:text-deepblue2"/>
-        </Link>
-        <Link to="/history" className="text-gray-500 hover:text-purple-500">
-        <Icon icon="fluent:history-32-filled" width="28" className="my-auto"/>
-        </Link>
-        <div className="bg-gradient-to-b from-deepblue1 to-deepblue2 h-16 w-16 flex justify-center align-center text-white rounded-full shadow-xl">
-        <Icon icon="mdi:rupee" width="36" className="my-auto text-white"/>
+      
+      <div className="mt-6 w-full overflow-y-auto mb-4">
+            <h4 className="text-xl font-semibold text-gray-800 mb-4">Transactions</h4>
+            <ul className="space-y-2">
+            <li className="flex justify-between items-center bg-white px-4 py-2 rounded-xl">
+                <div>
+                <h5 className="font-md text-lg">Puran's Store</h5>
+                <p className="text-sm text-gray-500">02 July 2023 | 10:00</p>
+                </div>
+                <p className="text-red-500">₹202</p>
+            </li>
+            <li className="flex justify-between items-center bg-white px-4 py-2 rounded-xl">
+                <div>
+                <h5 className="font-md text-lg">Excitel Wi-Fi Bill</h5>
+                <p className="text-sm text-gray-500">29 June 2023 | 14:40</p>
+                </div>
+                <p className="text-red-500">₹120</p>
+            </li>
+            <li className="flex justify-between items-center bg-white px-4 py-2 rounded-xl">
+                <div>
+                <h5 className="font-md text-lg">Stipend</h5>
+                <p className="text-sm text-gray-500">24 June 2023 | 12:10</p>
+                </div>
+                <p className="text-green-500">₹100000</p>
+            </li>
+            </ul>
         </div>
-        <Link to="/blogspace" className="text-gray-500 hover:text-purple-500">
-        <Icon icon="hugeicons:quill-write-02" width="28" className="my-auto"/>
-        </Link>
-        <Link to="/statistics" className="text-gray-500 hover:text-purple-500">
-        <Icon icon="octicon:graph-24" width="28" className="my-auto"/>
-        </Link>
-      </div>
+      <Footer/>
+
     </div>
   );
 };

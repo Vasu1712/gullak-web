@@ -47,14 +47,14 @@ const SignupPage = () => {
             placeholder="Enter Your Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 mb-4 border border-deeppurple bg-grad1 rounded-lg shadow-sm"
+            className="w-full p-2 mb-4 border border-deeppurple bg-grad1 rounded-lg shadow-sm placeholder-deeppurple"
           />
           <input
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full p-2 mb-8 border border-deeppurple bg-grad1 rounded-lg shadow-sm"
+            className="w-full p-2 mb-4 border border-deeppurple bg-grad1 rounded-lg shadow-sm placeholder-deeppurple"
           />
           <button
             onClick={handleSignUp}

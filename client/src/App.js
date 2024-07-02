@@ -6,6 +6,10 @@ import LandingPage from './routes/LandingPage';
 import SignupPage from './routes/SignupPage';
 import LoginPage from './routes/LoginPage';
 import ProfilePage from './routes/ProfilePage';
+import Transactions from './routes/Transactions';
+import Statistics from './routes/Statistics';
+import Blogspace from './routes/Blogspace';
+import Overview from './routes/Overview';
 import './firebaseConfig';
 import './custom.css';
 
@@ -38,6 +42,22 @@ function App() {
           <Route
             path='/profile'
             element=<ProfilePage />
+          />
+          <Route
+            path='/transactions'
+            element=<Transactions />
+          />
+          <Route
+            path='/blogspace'
+            element=<Blogspace />
+          />
+          <Route
+            path='/statistics'
+            element=<Statistics />
+          />
+          <Route
+            path='/overview'
+            element=<Overview />
           />
           {/* <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
