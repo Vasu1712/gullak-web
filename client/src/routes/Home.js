@@ -27,6 +27,7 @@ const Home = () => {
           </div>
           <h1 className="text-3xl md:text-6xl font-light my-4 text-gray-200 tracking-wide">Your financial companion</h1>
           <p className="text-lg md:text-xl my-6 px-4 text-gray-400">Gullak is our solution to efficiently manage your finances hassle-free</p>
+          <Link to="/landingpage" className="hidden sm:inline-block bg-white text-black my-6 py-3 px-8 mx-4 rounded-full">Get Onboard</Link>
           <span className="flex gap-x-0.5 sm:gap-x-1 pt-6 text-light text-sm italic text-gray-400 justify-center md:justify-start">
             <span className="text-yellow-400">★</span>
             This is the mobile web-version of Gullak, so make sure you are you are logging into your Gullak with your mobile screens
@@ -38,7 +39,7 @@ const Home = () => {
         <div className="md:hidden flex justify-center items-center my-8 px-4">
           <img src={mockup} alt="App Preview" className="w-full" />
         </div>
-        <Link to="/landingpage" className="inline-block bg-white text-black my-6 py-3 px-8 mx-4 rounded-full">Get Onboard</Link>
+        <Link to="/landingpage" className="sm:hidden inline-block bg-white text-black my-6 py-3 px-8 mx-4 rounded-full">Get Onboard</Link>
       </div>
       <footer className="p-4 text-center text-gray-500">
         <p>&copy; 2024 Gullak. All rights reserved.</p>

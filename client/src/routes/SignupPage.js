@@ -4,15 +4,16 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import 'tailwindcss/tailwind.css';
 import '../custom.css';
 
-
 const SignupPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   const auth = getAuth();
 
   const handleSignUp = () => {
+    setErrorMessage(''); // Reset the error message
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -20,10 +21,11 @@ const SignupPage = () => {
           navigate('/login');
         })
         .catch((error) => {
+          setErrorMessage(error.message); // Update the error message state
           console.error('Error:', error.message);
         });
     } else {
-      console.error("Passwords don't match");
+      setErrorMessage("Passwords don't match"); // Update the error message state
     }
   };
 
@@ -56,9 +58,15 @@ const SignupPage = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             className="w-full p-2 mb-4 border border-deeppurple bg-grad1 rounded-lg shadow-sm placeholder-deeppurple"
           />
+          {errorMessage && (
+            <span className="text-red-400 italic text-sm mb-4 block">
+              {errorMessage}
+            </span>
+          )}
           <button
             onClick={handleSignUp}
-            className="flex justify-center items-center mx-auto w-36 gap-x-2 bg-white text-darkpurple py-2 px-4 rounded-full shadow-lg" >
+            className="flex justify-center items-center mx-auto w-36 gap-x-2 bg-white text-darkpurple py-2 px-4 rounded-full shadow-lg"
+          >
             Sign Up
           </button>
           <p className="mt-6 text-center text-gray-700">
@@ -74,4 +82,3 @@ const SignupPage = () => {
 };
 
 export default SignupPage;
-

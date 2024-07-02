@@ -10,6 +10,7 @@ import Transactions from './routes/Transactions';
 import Statistics from './routes/Statistics';
 import Blogspace from './routes/Blogspace';
 import Overview from './routes/Overview';
+import Tasks from './routes/Tasks';
 import './firebaseConfig';
 import './custom.css';
 
@@ -58,6 +59,10 @@ function App() {
           <Route
             path='/overview'
             element=<Overview />
+          />
+          < Route 
+            path='/tasks'
+            element=<Tasks />
           />
           {/* <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />

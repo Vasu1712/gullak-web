@@ -7,10 +7,12 @@ import 'tailwindcss/tailwind.css';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   const auth = getAuth();
 
   const handleSignInWithGoogle = async () => {
+    setErrorMessage(''); // Reset the error message
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
@@ -19,6 +21,7 @@ const LoginPage = () => {
       navigate('/profile');
     } catch (error) {
       console.error('Error signing in with Google:', error.message);
+      setErrorMessage(error.message);
     }
   };
 
@@ -75,6 +78,11 @@ const LoginPage = () => {
             className="flex justify-center items-center mx-auto gap-x-2 bg-deeppurple text-white py-2 px-6 rounded-full shadow-lg font-light">
             Sign in with Google
           </button>
+          {errorMessage && (
+            <span className="text-red-400 italic text-sm mb-4 block">
+              {errorMessage}
+            </span>
+          )}
           <p className="mt-6 text-center text-gray-700">
             Don't have an account?{' '}
             <Link to="/signup" className="text-deeppurple font-bold">
