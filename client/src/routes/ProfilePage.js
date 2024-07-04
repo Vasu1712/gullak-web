@@ -34,7 +34,9 @@ const ProfilePage = () => {
           </div>
         </div>
         <div className="my-auto justify-start">
-          <Icon icon="heroicons-outline:menu-alt-1" width="28" className="my-auto text-deepblue2"/>
+          <Link to="/blogspace">
+            <Icon icon="hugeicons:quill-write-02" width="28" className="my-auto text-deepblue2"/>
+          </Link>
         </div>
       </div>
 
@@ -126,10 +128,10 @@ const ProfilePage = () => {
           </li>
           <li className="flex justify-between items-center bg-white px-4 py-2 rounded-xl">
             <div>
-              <h5 className="font-md text-lg">Stipend</h5>
+              <h5 className="font-md text-lg">SHAMSHAD</h5>
               <p className="text-sm text-gray-500">24 June 2023 | 12:10</p>
             </div>
-            <p className="text-green-500">₹100000</p>
+            <p className="text-red-500">₹100</p>
           </li>
         </ul>
       </div>

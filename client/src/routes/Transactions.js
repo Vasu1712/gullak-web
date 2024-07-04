@@ -25,7 +25,19 @@ const Transactions = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+        <div className="bg-gradient-to-br from-grad1 via-grad2 to-grad3 p-4">
+            <div className="mt-6 w-full overflow-y-auto mb-4">
+              <h4 className="text-3xl font-semibold text-gray-800 ">Transaction History</h4>
+                <div className="spinner-container">
+                    <svg className="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle className="path" fill="none" strokeWidth="6" strokeLinecap="round" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                </div>
+            </div>
+            <Footer />
+        </div>
+    );
   }
 
   if (error) {

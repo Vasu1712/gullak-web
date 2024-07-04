@@ -5,7 +5,6 @@ import profileimage from '../assets/images/profile_image.png';
 import coins from '../assets/images/coins.png';
 import Footer from './Footer';
 
-const generateAvatar = (seed) => `https://api.dicebear.com/9.x/micah/svg?seed=${seed}`; 
 
 
 const Tasks = () => {

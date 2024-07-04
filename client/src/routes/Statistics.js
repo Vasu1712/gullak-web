@@ -128,7 +128,7 @@ const Statistics = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-grad1 via-grad2 to-grad3 p-4">
       <div className="flex justify-between items-center">
-        <Link to="/" className="text-deepblue2">
+        <Link to="/profile" className="text-deepblue2">
           <Icon icon="mdi:arrow-left" width="28" className="my-auto" />
         </Link>
         <h1 className="text-2xl font-semibold">Statistics</h1>

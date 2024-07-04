@@ -12,8 +12,10 @@ import Blogspace from './routes/Blogspace';
 import Overview from './routes/Overview';
 import Tasks from './routes/Tasks';
 import Leaderboard from './routes/Leaderboard';
+import Scan from './routes/ScanReceipt.js';
 import './firebaseConfig';
 import './custom.css';
+import ScanReceipt from './routes/ScanReceipt.js';
 
 // import ProtectedRoute from './components/ProtectedRoute';
 
@@ -68,6 +70,10 @@ function App() {
           < Route 
             path='/leaderboard'
             element=<Leaderboard />
+          />
+          < Route 
+            path='/scan'
+            element=<Scan />
           />
           {/* <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
