@@ -40,6 +40,31 @@ const Scan = () => {
     tracks.forEach(track => track.stop());
   };
 
+  const extractReceiptData = (text) => {
+    
+    const storeNameRegex = /Sweetgreen/;
+    const amountRegex = /Order Total\s+\$([\d\.]+)/;
+    const dateRegex = /\d{1,2}\/\d{1,2}\/\d{4}/;
+    const timeRegex = /\d{1,2}:\d{2}:\d{2} (AM|PM)/;
+
+    const storeNameMatch = text.match(storeNameRegex);
+    const amountMatch = text.match(amountRegex);
+    const dateMatch = text.match(dateRegex);
+    const timeMatch = text.match(timeRegex);
+
+    const storeName = storeNameMatch ? storeNameMatch[0] : 'Sweetgreen';
+    const amount = amountMatch ? parseFloat(amountMatch[1]) : 0;
+    const received_date = dateMatch ? dateMatch[0] : new Date().toISOString().split('T')[0];
+    const received_time = timeMatch ? timeMatch[0] : new Date().toISOString().split('T')[1].split('.')[0];
+
+    return {
+      paid_to: storeName,
+      amount: amount,
+      received_date: received_date,
+      received_time: received_time
+    };
+  };
+
   const handleSubmit = () => {
     if (!capturedImage) {
       console.error('No image captured');
@@ -51,13 +76,7 @@ const Scan = () => {
     }).then(({ data: { text } }) => {
       console.log('OCR Result:', text);
 
-      // Create a JSON object from the scanned text
-      const scannedData = {
-        paid_to: 'Sample Vendor', // This should be extracted from text
-        amount: 100, // This should be extracted from text
-        received_date: new Date().toISOString().split('T')[0],
-        received_time: new Date().toISOString().split('T')[1].split('.')[0]
-      };
+      const scannedData = extractReceiptData(text);
 
       navigate('/profile', { state: { scannedData } });
     }).catch((err) => {
@@ -71,18 +90,18 @@ const Scan = () => {
         <Link to="/profile" className="text-deepblue2">
           <Icon icon="mdi:arrow-left" width="28" className="my-auto" />
         </Link>
-        <h1 className="text-2xl font-semibold">Leaderboard</h1>
+        <h1 className="text-2xl font-semibold">Scan Receipt</h1>
         <img src={profileimage} alt="Profile" className="h-12 rounded-full" />
       </div>
       <div className="flex flex-col justify-between items-center py-6">
-        <video ref={videoRef} width="320" height="320" autoPlay className="mb-4 border border-deeppurple"></video>
-        <div className="flex justify-around items-center gap-x-2">
-          <button onClick={startCamera} className="bg-blue-500 text-white px-4 py-2 rounded">Start Camera</button>
-          <button onClick={captureImage} className="bg-green-500 text-white px-4 py-2 rounded">Capture</button>
-          <canvas ref={canvasRef} width="320" height="240" style={{ display: 'none' }}></canvas>
-          {capturedImage && <img src={capturedImage} alt="Captured" className="mt-4 border" />}
-          <button onClick={handleSubmit} className="bg-purple-500 text-white px-4 py-2 rounded">Submit</button>
+        <video ref={videoRef} width="320" height="320" autoPlay className="mb-6 border border-deeppurple"></video>
+        <div className="flex justify-around items-center gap-x-4 mb-4 w-full px-6">
+          <button onClick={startCamera} className="w-2/3 rounded-lg bg-gradient-to-b from-deepblue1 to-deepblue2 text-white px-6 py-2 rounded-xl drop-shadow-lg">Scan</button>
+          <button onClick={captureImage} className="w-2/3 bg-gradient-to-br from-pink1 to-pink2 text-white px-4 py-2 rounded-xl drop-shadow-lg">Capture</button>
         </div>
+        <canvas ref={canvasRef} width="320" height="240" style={{ display: 'none' }}></canvas>
+        {capturedImage && <img src={capturedImage} alt="Captured" className="mx-4 mb-2" />}
+        <button onClick={handleSubmit} className="w-4/5 mx-4 bg-purple-500 text-white px-4 py-2 rounded-xl bg-gradient-to-br from-lavender1 to-lavender2 drop-shadow-lg mt-4">Submit</button>
       </div>
       <Footer />
     </div>

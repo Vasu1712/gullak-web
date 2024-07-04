@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Footer from './Footer';
 import profileimage from '../assets/images/profile_image.png';
-import coins from '../assets/images/coins.svg'; 
+import coins from '../assets/images/coins.svg';
 import pot from '../assets/images/pot_icon.png';
 import rewards from '../assets/images/rewards_icon.png';
 
 const ProfilePage = () => {
   const [userName, setUserName] = useState('');
+  const [transactions, setTransactions] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     const auth = getAuth();
@@ -20,8 +22,14 @@ const ProfilePage = () => {
         setUserName('User');
       }
     });
+
+    // Check if there's scannedData in the location state
+    if (location.state && location.state.scannedData) {
+      setTransactions(prevTransactions => [...prevTransactions, location.state.scannedData]);
+    }
+
     return () => unsubscribe();
-  }, []);
+  }, [location.state]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-grad1 via-grad2 to-grad3 p-4">
@@ -81,7 +89,6 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      {/* target div: scrolling elements inside this div */}
       <div className="mt-6 w-full max-w-md overflow-x-auto">
         <p className="text-xl font-semibold text-gray-800 mb-4">Explore</p>
         <div className="flex gap-3">
@@ -112,6 +119,15 @@ const ProfilePage = () => {
       <div className="mt-6 w-full overflow-y-auto mb-4">
         <h4 className="text-xl font-semibold text-gray-800 mb-4">Transactions</h4>
         <ul className="space-y-2">
+          {transactions.map((transaction, index) => (
+            <li key={index} className="flex justify-between items-center bg-white px-4 py-2 rounded-xl">
+              <div>
+                <h5 className="font-md text-lg">{transaction.paid_to}</h5>
+                <p className="text-sm text-gray-500">{transaction.received_date} | {transaction.received_time}</p>
+              </div>
+              <p className="text-red-500">₹{transaction.amount}</p>
+            </li>
+          ))}
           <li className="flex justify-between items-center bg-white px-4 py-2 rounded-xl">
             <div>
               <h5 className="font-md text-lg">Puran's Store</h5>
